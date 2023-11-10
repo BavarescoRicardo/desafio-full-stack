@@ -37,10 +37,10 @@ public class PessoaService {
     public boolean salvar(PessoaDto endereco){
         try {
             // Define objeto  participante para salvar no banco de dados a partir do dto recebido
-        	Pessoa e = new Pessoa(
+        	Pessoa pessoa = new Pessoa(
         			pessoa.getNome(), pessoa.getCpf(), pessoa.getDataNascimento(), pessoa.getSexo()));
 
-        	pessoaDB.save(e);
+        	pessoaDB.save(pessoa);
         } catch (Exception e) {
             return false;
         }
