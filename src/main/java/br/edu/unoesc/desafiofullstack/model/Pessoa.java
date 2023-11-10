@@ -1,11 +1,14 @@
 package br.edu.unoesc.desafiofullstack.model;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -28,16 +31,12 @@ public class Pessoa {
     private String nome;
     private String CPF;
     private Date dataNascimento;
-    private String sexo;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "evento_id")
-//    private Evento evento;
-//
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jurado")
-//    private List<Nota> notas;
-//
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "jurado")
-//    private List<NotaFinal> notasfinais;                
+    private String sexo;       
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
+    private List<Contato> contatos;        
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
+    private List<Endereco> enderecos;            
     
 }
