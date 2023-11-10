@@ -1,0 +1,22 @@
+package br.edu.unoesc.desafiofullstack.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+@RequestMapping("/pessoa")
+public class PessoaController {
+
+	@GetMapping("/listar")
+	public String listar() {
+		return "pessoa/listagem";
+	}	
+	
+	@GetMapping("/cadastro")
+	public String cadastro() {
+		return "pessoa/cadastro";
+	}		
+
+}
