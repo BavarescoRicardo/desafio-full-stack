@@ -49,3 +49,14 @@ Para auxiliar no entendimento, elaboramos um diagrama de classes simples contend
 - Sentido e coerência nas respostas aos questionamentos na entrevista de apresentação do desafio realizada pelo candidato.
 
 **Não esqueça de documentar o processo necessário para rodar a aplicação.**
+## Necessário para rodar a aplicação.
+** Atualizar repositório
+** Baixar as dependencias do maven
+** Configurar seu banco em - application.properties
+
+
+
+## Minha implementação
+* Criados modelos e repositórios
+* configuração banco local
+* incluidas bibliotecas lombok, jpa
