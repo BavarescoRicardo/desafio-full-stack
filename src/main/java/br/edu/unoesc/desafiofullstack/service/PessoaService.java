@@ -28,7 +28,7 @@ public class PessoaService {
         // Converte a lista de objetos da entidade em objetos dto para transferencia
         for(Pessoa pessoa: pessoaDB.findAll()) {
             listaDto.add(new PessoaDto(
-        		pessoa.getNome(), pessoa.getCpf(), pessoa.getDataNascimento(), pessoa.getSexo()));
+        		pessoa.getNome(), pessoa.getCPF(), pessoa.getDataNascimento(), pessoa.getSexo()));
         }
 
         return listaDto;
