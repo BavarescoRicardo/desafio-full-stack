@@ -7,6 +7,52 @@
 </head>
 <body>
     <h1>Lista de pessoas</h1>
+    <div class="container">
+
+        <table class="table">
+            <thead class="table-dark">
+              <th>Código</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Ações</th>
+            </thead>
+            <tbody>
+              <th:block th:each="pessoa : ${pessoas}">
+                <tr>
+                  <td th:text="${pessoa.codigo}"></td>
+                  <td th:text="${pessoa.nome}"></td>
+                  <td th:text="${pessoa.CPF}"></td>
+                  <td>
+                    <a 
+                      data-bs-toggle="modal" 
+                      th:attr="data-bs-target='#modal-delete'+${pessoa.codigo}"
+                      class="btn btn-danger btn-sm"
+                    >Excluir</a>                
+                    <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-primary btn-sm">Editar</a>
+                  </td>
+                </tr>
+                <!-- Modal exluir -->
+                <div class="modal modal-delete" th:codigo="modal-delete+${pessoa.codigo}">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 codigo="delModalLabel">Excluir</h5>
+                          </div>
+                          <div class="modal-body">
+                              O usuário será excluido, confirma esta ação?
+                          </div>
+                          <div class="modal-footer">
+                            <a th:href="@{'/usuario/delete/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
+                              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                          </div>
+                      </div>
+                  </div>
+                </div>            
+              </th:block>
+            </tbody>
+          </table>
+
+    </div>
     <p><a href="/">Inicio</a></p>
 </body>
 </html>

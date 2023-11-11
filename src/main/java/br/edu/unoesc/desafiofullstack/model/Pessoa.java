@@ -35,6 +35,15 @@ public class Pessoa {
 		this.sexo = sexo;
 	}
 
+    public Pessoa(long codigo, String nome, String cPF, Date dataNascimento, String sexo) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		CPF = cPF;
+		this.dataNascimento = dataNascimento;
+		this.sexo = sexo;
+	}	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
