@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PessoaService {
-    private final PessoaRepository pessoaDB = null;
+    private final PessoaRepository pessoaDB;
 
 
     public Optional<Pessoa> encontrarPorId(Long id){        

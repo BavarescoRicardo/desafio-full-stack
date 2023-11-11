@@ -7,40 +7,39 @@
 </head>
 <body>
 	<div class="container col-lg-10 spacer">
-		<form>
+		<form
+			th:object="${pessoaDto}"
+			action="/pessoa/save"
+			class="card-body"
+			method="POST"
+		>
 			<h1>Cadastro de nova pessoa</h1>
-
 			<div class="form-outline mb-4">
-				<input type="text" id="nomePessoa" class="form-control" />
-				<label class="form-label" for="nomePessoa">Informe seu nome</label>
+				<input type="text" id="nome" name="nome" class="form-control" th:field="*{nome}"/>
+				<label class="form-label" for="nome">Informe seu nome</label>
 			</div>
 		
 			<div class="form-outline mb-4">
-				<input type="text" id="cpfPessoa" class="form-control" />
-				<label class="form-label" for="cpfPessoa">Informe seu CPF</label>
-			</div>
-		
-			<div class="form-outline mb-4">
-				<input type="text" id="cpfPessoa" class="form-control" />
-				<label class="form-label" for="cpfPessoa">Informe seu CPF</label>
+				<input type="text" id="CPF" name="CPF" class="form-control" th:field="*{CPF}" />
+				<label class="form-label" for="CPF">Informe seu CPF</label>
 			</div>
 
 			<div class="form-outline mb-4">
-				<input type="date" id="dataNascimento" class="form-control" />
+				<input type="date" id="dataNascimento" name="dataNascimento" class="form-control" th:field="*{dataNascimento}" />
 				<label class="form-label" for="dataNascimento">Informe sua data de nascimento</label>
-			</div>	
+			</div>						
 			
 			<div class="form-outline mb-4">
 				<div class="form-check">
-					<input type="radio" class="form-check-input" id="radio1" name="optradio" value="masc" checked>Masculino
+					<input type="radio" class="form-check-input" id="radio1" name="sexo" value="masc" checked th:field="*{sexo}">Masculino
 					<label class="form-check-label" for="radio1"></label>
 				  </div>
 				  <div class="form-check">
-					<input type="radio" class="form-check-input" id="radio2" name="optradio" value="fem">Feminino
+					<input type="radio" class="form-check-input" id="radio2" name="sexo" value="fem" th:field="*{sexo}">Feminino
 					<label class="form-check-label" for="radio2"></label>
 				  </div>
 				  <div class="form-check">
-					<input type="radio" class="form-check-input"id="radio3" name="optradio" value="outro">Outro
+					<input type="radio" class="form-check-input"id="radio3" name="sexo" value="outro" th:field="*{sexo}">Outro
 					<label class="form-check-label"></label>
 				  </div> 				  
 			</div>						
@@ -48,7 +47,7 @@
 			<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
 		</form>
 	</div>
-	<div style="margin-left: 5em; margin-top: 5em;">
+	<div style="margin-left: 15em; margin-top: 5em;">
 		<p><a href="/">Inicio</a></p>
 	</div>
 </body>

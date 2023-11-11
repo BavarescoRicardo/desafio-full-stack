@@ -1,15 +1,22 @@
 package br.edu.unoesc.desafiofullstack.controller;
+import org.springframework.ui.Model;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.unoesc.desafiofullstack.dto.PessoaDto;
+import br.edu.unoesc.desafiofullstack.model.Pessoa;
 import br.edu.unoesc.desafiofullstack.service.PessoaService;
-import ch.qos.logback.core.model.Model;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -27,10 +34,22 @@ public class PessoaController {
 //		
 //		return "pessoa/listagem";
 //	}	
-	
-	@GetMapping("/cadastro")
-	public String cadastro() {
-		return "pessoa/cadastro";
-	}		
+
+    @GetMapping("/cadastro")
+    public String mostrarFormularioCadastro(Model model) {
+        model.addAttribute("pessoaDto", new PessoaDto());
+        return "pessoa/cadastro";
+    }
+
+    @PostMapping("/save")
+    public String novo(@Valid PessoaDto pessoaDto, BindingResult result, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return "pessoa/cadastro";
+        }
+
+        // boolean salvouComSucesso = pessoaService.salvar(pessoaDto);
+        pessoaService.salvar(pessoaDto);
+        return "redirect:/";
+    }	
 
 }
