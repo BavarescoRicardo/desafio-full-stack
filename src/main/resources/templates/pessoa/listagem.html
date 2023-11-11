@@ -6,10 +6,11 @@
     <title>Lista de pessoas</title>
 </head>
 <body>
-    <h1>Lista de pessoas</h1>
+    
     <div class="container">
+        <h1>Lista de pessoas</h1>
 
-        <table class="table">
+        <table class="table table-hover">
             <thead class="table-dark">
               <th>Código</th>
               <th>Nome</th>
@@ -29,6 +30,8 @@
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
                     <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-primary btn-sm">Editar</a>
+                    <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
+                    <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
                   </td>
                 </tr>
                 <!-- Modal exluir -->
@@ -51,8 +54,8 @@
               </th:block>
             </tbody>
           </table>
-
+          <p><a href="/">Inicio</a></p>
     </div>
-    <p><a href="/">Inicio</a></p>
+    
 </body>
 </html>
