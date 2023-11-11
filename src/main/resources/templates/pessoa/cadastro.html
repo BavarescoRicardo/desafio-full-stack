@@ -6,23 +6,50 @@
     <title>Lista de pessoas</title>
 </head>
 <body>
-	<form>
-	    <h1>Cadastro de nova pessoa</h1>
-	    <!-- Nome input -->
-	    <div class="form-outline mb-4">
-	      <input type="text" id="nomePessoa" class="form-control" />
-	      <label class="form-label" for="nomePessoa">Informe seu nome</label>
-	    </div>
-	  
-	    <!-- CPF input -->
-	    <div class="form-outline mb-4">
-	      <input type="text" id="cpfPessoa" class="form-control" />
-	      <label class="form-label" for="cpfPessoa">Informe seu CPF</label>
-	    </div>    
-	  
-	    <!-- Submit button -->
-	    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-	</form>
-	<p><a href="/">Inicio</a></p>
+	<div class="container col-lg-10 spacer">
+		<form>
+			<h1>Cadastro de nova pessoa</h1>
+
+			<div class="form-outline mb-4">
+				<input type="text" id="nomePessoa" class="form-control" />
+				<label class="form-label" for="nomePessoa">Informe seu nome</label>
+			</div>
+		
+			<div class="form-outline mb-4">
+				<input type="text" id="cpfPessoa" class="form-control" />
+				<label class="form-label" for="cpfPessoa">Informe seu CPF</label>
+			</div>
+		
+			<div class="form-outline mb-4">
+				<input type="text" id="cpfPessoa" class="form-control" />
+				<label class="form-label" for="cpfPessoa">Informe seu CPF</label>
+			</div>
+
+			<div class="form-outline mb-4">
+				<input type="date" id="dataNascimento" class="form-control" />
+				<label class="form-label" for="dataNascimento">Informe sua data de nascimento</label>
+			</div>	
+			
+			<div class="form-outline mb-4">
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="radio1" name="optradio" value="masc" checked>Masculino
+					<label class="form-check-label" for="radio1"></label>
+				  </div>
+				  <div class="form-check">
+					<input type="radio" class="form-check-input" id="radio2" name="optradio" value="fem">Feminino
+					<label class="form-check-label" for="radio2"></label>
+				  </div>
+				  <div class="form-check">
+					<input type="radio" class="form-check-input"id="radio3" name="optradio" value="outro">Outro
+					<label class="form-check-label"></label>
+				  </div> 				  
+			</div>						
+
+			<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+		</form>
+	</div>
+	<div style="margin: 5em auto">
+		<p><a href="/">Inicio</a></p>
+	</div>
 </body>
 </html>

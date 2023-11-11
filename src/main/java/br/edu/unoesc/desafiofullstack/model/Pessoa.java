@@ -25,7 +25,15 @@ import lombok.ToString;
 @Setter
 public class Pessoa {
 
-    @Id
+    public Pessoa(String nome, String cPF, Date dataNascimento, String sexo) {
+		super();
+		this.nome = nome;
+		CPF = cPF;
+		this.dataNascimento = dataNascimento;
+		this.sexo = sexo;
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
     private String nome;
@@ -37,6 +45,38 @@ public class Pessoa {
     private List<Contato> contatos;        
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
-    private List<Endereco> enderecos;            
+    private List<Endereco> enderecos;
+
+	public String getCPF() {
+		return CPF;
+	}
+
+	public void setCPF(String cPF) {
+		CPF = cPF;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}            
     
 }

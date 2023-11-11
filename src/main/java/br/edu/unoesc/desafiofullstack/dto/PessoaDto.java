@@ -21,7 +21,6 @@ public class PessoaDto {
     private String nome;
     private String CPF;
     private Date dataNascimento;
-    private String sexo;  
-   
+    private String sexo;    
     
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.edu.unoesc.desafiofullstack.dto.PessoaDto;
@@ -15,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PessoaService {
-    private final PessoaRepository pessoaDB;
+    private final PessoaRepository pessoaDB = null;
 
 
     public Optional<Pessoa> encontrarPorId(Long id){        
@@ -34,17 +33,18 @@ public class PessoaService {
         return listaDto;
     }
 
-    public boolean salvar(PessoaDto endereco){
-        try {
-            // Define objeto  participante para salvar no banco de dados a partir do dto recebido
-        	Pessoa pessoa = new Pessoa(
-        			pessoa.getNome(), pessoa.getCpf(), pessoa.getDataNascimento(), pessoa.getSexo()));
+   public boolean salvar(PessoaDto pessoaDto){
+       try {
+           // Define objeto  participante para salvar no banco de dados a partir do dto recebido
+       	Pessoa pessoa = new Pessoa(
+       			pessoaDto.getNome(), pessoaDto.getCPF(), pessoaDto.getDataNascimento(), pessoaDto.getSexo());
 
-        	pessoaDB.save(pessoa);
-        } catch (Exception e) {
-            return false;
-        }
-    }
+       	pessoaDB.save(pessoa);
+        return true;
+       } catch (Exception e) {
+           return false;
+       }
+   }
 //    
 //    public PessoaDto atualizar(PessoaDto endereco, long id){
 //        try {
