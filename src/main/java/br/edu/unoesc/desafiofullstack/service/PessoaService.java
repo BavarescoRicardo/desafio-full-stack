@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import br.edu.unoesc.desafiofullstack.dto.ListaPessoaDto;
 import br.edu.unoesc.desafiofullstack.dto.PessoaDto;
 import br.edu.unoesc.desafiofullstack.model.Pessoa;
 import br.edu.unoesc.desafiofullstack.repository.PessoaRepository;
@@ -22,12 +21,12 @@ public class PessoaService {
         return pessoaDB.findById(id);
     }
 
-    public List<ListaPessoaDto> encontrar(){
-        List<ListaPessoaDto> listaDto = new ArrayList<ListaPessoaDto>();
+    public List<PessoaDto> encontrar(){
+        List<PessoaDto> listaDto = new ArrayList<PessoaDto>();
         
         // Converte a lista de objetos da entidade em objetos dto para transferencia
         for(Pessoa pessoa: pessoaDB.findAll()) {
-            listaDto.add(new ListaPessoaDto(
+            listaDto.add(new PessoaDto(
         		pessoa.getCodigo(), pessoa.getNome(), pessoa.getCPF(), pessoa.getDataNascimento(), pessoa.getSexo()));
         }
 

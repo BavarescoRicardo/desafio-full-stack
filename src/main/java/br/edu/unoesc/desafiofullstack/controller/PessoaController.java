@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.edu.unoesc.desafiofullstack.dto.ListaPessoaDto;
 import br.edu.unoesc.desafiofullstack.dto.PessoaDto;
 import br.edu.unoesc.desafiofullstack.service.PessoaService;
 import jakarta.validation.Valid;
@@ -29,7 +28,7 @@ public class PessoaController {
 
 	@GetMapping("/listar")
 	public String listar(Model model) {
-	    List<ListaPessoaDto> listaPessoas = pessoaService.encontrar();
+	    List<PessoaDto> listaPessoas = pessoaService.encontrar();
         model.addAttribute("pessoas", listaPessoas);
 		
 		return "pessoa/listagem";

@@ -19,9 +19,11 @@ import lombok.ToString;
 @Getter
 @Setter
 public class PessoaDto {
-    
+
+    private Long codigo;
     @NotBlank(message= "O nome é obrigatório")
     private String nome;
+    @NotBlank(message= "O CPF é obrigatório")
     private String CPF;
     private Date dataNascimento;
     private String sexo;    

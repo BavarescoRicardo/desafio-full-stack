@@ -29,7 +29,7 @@
                       th:attr="data-bs-target='#modal-delete'+${pessoa.codigo}"
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
-                    <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-primary btn-sm">Editar</a>
+                    <a th:replace="fragments/header :: head">     class="btn btn-primary btn-sm">Editar</a>
                     <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
                     <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
                   </td>
