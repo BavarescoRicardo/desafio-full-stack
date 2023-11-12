@@ -6,6 +6,7 @@
 </head>
 <body>    
     <div class="container">
+      <div th:replace="fragments/barraNavegacao"></div>
         <h1 style="margin-bottom: 1em;">Lista de enderecos</h1>
 
         <table class="table table-hover">
@@ -38,8 +39,6 @@
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
-                    <a th:href="@{'/contato/cadastro/' + ${endereco.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
-                    <a th:href="@{'/endereco/cadastro/' + ${endereco.codigo}}" class="btn btn-success btn-sm">Endereços</a>
                   </td>
                 </tr>
                 <!-- Modal exluir -->
