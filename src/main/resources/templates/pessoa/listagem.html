@@ -29,8 +29,8 @@
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
-                    <a th:href="@{'/contato/cadastro?codigo=' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
-                    <a th:href="@{'/endereco/cadastro?codigo=' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
+                    <a th:href="@{'/contato/cadastro/' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
+                    <a th:href="@{'/endereco/cadastro/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
                   </td>
                 </tr>
                 <!-- Modal exluir -->

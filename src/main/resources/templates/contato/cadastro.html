@@ -24,6 +24,9 @@
 					<input type="text" id="telefone" name="telefone" class="form-control" th:field="*{telefone}" />
 					<label class="form-label" for="telefone">Informe seu telefone</label>
 				</div>		
+				
+				<input type="hidden" id="pessoa" name="pessoa" class="form-control" th:field="*{pessoa}" th:value="${pessoaCodigo}" />
+
 
 				<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
 			</form>
