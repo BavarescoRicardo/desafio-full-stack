@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.unoesc.desafiofullstack.dto.EnderecoDto;
-import br.edu.unoesc.desafiofullstack.dto.PessoaDto;
-import br.edu.unoesc.desafiofullstack.service.PessoaService;
+import br.edu.unoesc.desafiofullstack.service.EnderecoService;
 import jakarta.validation.Valid;
 
 
@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 public class EnderecoController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private EnderecoService enderecoService;
 
 	@GetMapping("/listar")
 	public String listar(Model model) {
@@ -30,22 +30,23 @@ public class EnderecoController {
         model.addAttribute("enderecos", listaPessoas);
 		
 		return "endereco/listagem";
-	}	
+	}
 
-    @GetMapping("/cadastro")
-    public String mostrarFormularioCadastro(Model model) {
+    @GetMapping("/cadastro/{pessoa}")
+    public String mostrarFormularioCadastro(@PathVariable("pessoa") Long pessoa, Model model) {
+        model.addAttribute("pessoaCodigo", pessoa);
         model.addAttribute("enderecoDto", new EnderecoDto());
         return "endereco/cadastro";
-    }
+    }    
 
     @PostMapping("/save")
-    public String novo(@Valid PessoaDto pessoaDto, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String novo(@Valid EnderecoDto enderecoDto, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "endereco/cadastro";
         }
 
-        // boolean salvouComSucesso = pessoaService.salvar(pessoaDto);
-        pessoaService.salvar(pessoaDto);
+        // boolean salvouComSucesso = enderecoService.salvar(pessoaDto);
+        enderecoService.salvar(enderecoDto);
         return "redirect:/";
     }
 }

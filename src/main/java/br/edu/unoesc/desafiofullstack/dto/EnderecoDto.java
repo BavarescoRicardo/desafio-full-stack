@@ -1,7 +1,5 @@
 package br.edu.unoesc.desafiofullstack.dto;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -20,12 +18,11 @@ import lombok.ToString;
 public class EnderecoDto {
 
     private Long codigo;
-    @NotBlank(message= "O CEP é obrigatório")
     private String cep;
     private String logradouro;
     private String numero;
     private String bairro;
-    private String municio;
+    private String municipio;
     private String estado;
     private Long pessoa;    
     

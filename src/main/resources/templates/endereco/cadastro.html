@@ -1,17 +1,59 @@
-<!-- Modal cadastro endereco -->
-<div class="modal modal" th:codigo="modal-delete">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 codigo="delModalLabel">Excluir</h5>
-			</div>
-			<div class="modal-body">
-				O usuário será excluido, confirma esta ação?
-			</div>
-			<div class="modal-footer">
-				<a th:href="@{'/usuario/delete/' + ${codigo}}" class="btn btn-success btn-sm">Confirmar</a>
-				<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
-			</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/header :: head">    
+    <title>Cadastro endereco</title>
+</head>
+<body>    
+    <div class="container">
+		<div class="container col-lg-10 spacer">
+			<form
+				th:object="${enderecoDto}"
+				action="/endereco/save"
+				class="card-body"
+				method="POST"
+			>
+				<h1 style="margin-bottom: 1em;">Cadastro de novo endereco</h1>
+				<div class="form-outline mb-4">
+					<input type="text" id="cep" name="cep" class="form-control" th:field="*{cep}"/>
+					<label class="form-label" for="cep">Informe seu CEP</label>
+				</div>
+			
+				<div class="form-outline mb-4">
+					<input type="text" id="logradouro" name="logradouro" class="form-control" th:field="*{logradouro}" />
+					<label class="form-label" for="logradouro">Informe seu logradouro</label>
+				</div>		
+
+				<div class="form-outline mb-4">
+					<input type="text" id="numero" name="numero" class="form-control" th:field="*{numero}" />
+					<label class="form-label" for="numero">Informe seu número</label>
+				</div>
+
+				<div class="form-outline mb-4">
+					<input type="text" id="bairro" name="bairro" class="form-control" th:field="*{bairro}" />
+					<label class="form-label" for="bairro">Informe seu bairro</label>
+				</div>
+				
+				<div class="form-outline mb-4">
+					<input type="text" id="municipio" name="municipio" class="form-control" th:field="*{municipio}" />
+					<label class="form-label" for="municipio">Informe seu múnicipio</label>
+				</div>
+				
+				<div class="form-outline mb-4">
+					<input type="text" id="estado" name="estado" class="form-control" th:field="*{estado}" />
+					<label class="form-label" for="estado">Informe seu estado</label>
+				</div>				
+				
+				<input type="hidden" id="pessoa" name="pessoa" class="form-control" th:field="*{pessoa}" th:value="${pessoaCodigo}" />
+
+
+				<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+			</form>
+		</div>
+		<div style="margin-left: 5em; margin-top: 5em;">
+			<p><a href="/">Inicio</a></p>
 		</div>
 	</div>
-	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/header :: head">    
+    <title>Lista de pessoas</title>
+</head>
+<body>    
+    <div class="container">
+        <h1 style="margin-bottom: 1em;">Lista de pessoas</h1>
+
+        <table class="table table-hover">
+            <thead class="table-dark">
+              <th>Código</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Ações</th>
+            </thead>
+            <tbody>
+              <th:block th:each="pessoa : ${pessoas}">
+                <tr>
+                  <td th:text="${pessoa.codigo}"></td>
+                  <td th:text="${pessoa.nome}"></td>
+                  <td th:text="${pessoa.CPF}"></td>
+                  <td>
+                    <a 
+                      data-bs-toggle="modal" 
+                      th:attr="data-bs-target='#modal-delete'+${pessoa.codigo}"
+                      class="btn btn-danger btn-sm"
+                    >Excluir</a>                
+                    <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
+                    <a th:href="@{'/contato/cadastro/' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
+                    <a th:href="@{'/endereco/cadastro/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
+                  </td>
+                </tr>
+                <!-- Modal exluir -->
+                <div class="modal modal-delete" th:codigo="modal-delete+${pessoa.codigo}">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 codigo="delModalLabel">Excluir</h5>
+                          </div>
+                          <div class="modal-body">
+                              O usuário será excluido, confirma esta ação?
+                          </div>
+                          <div class="modal-footer">
+                            <a th:href="@{'/pessoa/delete/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
+                              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+                          </div>
+                      </div>
+                  </div>
+                </div>            
+              </th:block>
+            </tbody>
+          </table>
+          <p><a href="/">Inicio</a></p>
+    </div>
+    
+</body>
+</html>

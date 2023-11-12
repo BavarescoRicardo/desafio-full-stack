@@ -1,5 +1,4 @@
 package br.edu.unoesc.desafiofullstack.dto;
-import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

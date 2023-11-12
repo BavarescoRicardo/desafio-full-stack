@@ -1,8 +1,6 @@
 package br.edu.unoesc.desafiofullstack.dto;
 import java.sql.Date;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -21,9 +19,7 @@ import lombok.ToString;
 public class PessoaDto {
 
     private Long codigo;
-    @NotBlank(message= "O nome é obrigatório")
     private String nome;
-    @NotBlank(message= "O CPF é obrigatório")
     private String CPF;
     private Date dataNascimento;
     private String sexo;    

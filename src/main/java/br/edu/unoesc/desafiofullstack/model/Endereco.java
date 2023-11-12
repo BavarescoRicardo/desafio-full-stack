@@ -33,11 +33,22 @@ public class Endereco {
     private String logradouro;
     private String numero;
     private String bairro;
-    private String municio;
+    private String municipio;
     private String estado;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa")
-    private Pessoa pessoa;                
+    private Pessoa pessoa;
+
+    public Endereco(String cep, String logradouro, String numero, String bairro, String municipio, String estado,
+            Pessoa pessoa) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.municipio = municipio;
+        this.estado = estado;
+        this.pessoa = pessoa;
+    }                
     
 }
