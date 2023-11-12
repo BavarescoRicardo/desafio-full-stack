@@ -5,8 +5,7 @@
 	<head th:replace="fragments/header :: head">    
     <title>Lista de pessoas</title>
 </head>
-<body>
-    
+<body>    
     <div class="container">
         <h1 style="margin-bottom: 1em;">Lista de pessoas</h1>
 
@@ -29,9 +28,9 @@
                       th:attr="data-bs-target='#modal-delete'+${pessoa.codigo}"
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
-                    <a th:replace="fragments/header :: head">     class="btn btn-primary btn-sm">Editar</a>
-                    <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
-                    <a th:href="@{'/usuario/cadastro/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
+                    <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
+                    <a th:href="@{'/contato/cadastro?codigo=' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
+                    <a th:href="@{'/endereco/cadastro?codigo=' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
                   </td>
                 </tr>
                 <!-- Modal exluir -->
@@ -45,7 +44,7 @@
                               O usuário será excluido, confirma esta ação?
                           </div>
                           <div class="modal-footer">
-                            <a th:href="@{'/usuario/delete/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
+                            <a th:href="@{'/pessoa/delete/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
                               <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
                           </div>
                       </div>

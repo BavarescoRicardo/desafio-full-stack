@@ -1,0 +1,17 @@
+<!-- Modal cadastro endereco -->
+<div class="modal modal" th:codigo="modal-delete">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 codigo="delModalLabel">Excluir</h5>
+			</div>
+			<div class="modal-body">
+				O usuário será excluido, confirma esta ação?
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/usuario/delete/' + ${codigo}}" class="btn btn-success btn-sm">Confirmar</a>
+				<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+	</div>
+	</div>

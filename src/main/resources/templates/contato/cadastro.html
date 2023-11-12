@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/header :: head">    
+    <title>Cadastro contato</title>
+</head>
+<body>    
+    <div class="container">
+		<div class="container col-lg-10 spacer">
+			<form
+				th:object="${contatoDto}"
+				action="/contato/save"
+				class="card-body"
+				method="POST"
+			>
+				<h1 style="margin-bottom: 1em;">Cadastro de novo contato</h1>
+				<div class="form-outline mb-4">
+					<input type="text" id="email" name="email" class="form-control" th:field="*{email}"/>
+					<label class="form-label" for="email">Informe seu email</label>
+				</div>
+			
+				<div class="form-outline mb-4">
+					<input type="text" id="telefone" name="telefone" class="form-control" th:field="*{telefone}" />
+					<label class="form-label" for="telefone">Informe seu telefone</label>
+				</div>		
+
+				<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+			</form>
+		</div>
+		<div style="margin-left: 5em; margin-top: 5em;">
+			<p><a href="/">Inicio</a></p>
+		</div>
+	</div>
+</body>
+</html>

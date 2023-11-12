@@ -1,9 +1,6 @@
 package br.edu.unoesc.desafiofullstack.controller;
 import org.springframework.ui.Model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +21,7 @@ import jakarta.validation.Valid;
 public class PessoaController {
 	
     @Autowired
-    private PessoaService pessoaService;    		
+    private PessoaService pessoaService;
 
 	@GetMapping("/listar")
 	public String listar(Model model) {
