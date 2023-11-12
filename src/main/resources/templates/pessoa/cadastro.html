@@ -6,6 +6,7 @@
 </head>
 <body>
 	<div class="container col-lg-10 spacer">
+		<div th:replace="fragments/barraNavegacao"></div>
 		<form
 			th:object="${pessoaDto}"
 			action="/pessoa/save"
