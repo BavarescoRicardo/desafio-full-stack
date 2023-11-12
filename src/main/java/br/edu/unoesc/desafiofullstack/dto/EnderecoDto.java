@@ -24,6 +24,17 @@ public class EnderecoDto {
     private String bairro;
     private String municipio;
     private String estado;
-    private Long pessoa;    
+    private Long pessoa;
+    
+    public EnderecoDto(String cep, String logradouro, String numero, String bairro, String municipio, String estado,
+            Long pessoa) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.municipio = municipio;
+        this.estado = estado;
+        this.pessoa = pessoa;
+    }    
     
 }

@@ -29,17 +29,16 @@ public class Contato {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
-    public Contato(String telefone, String email, Pessoa pessoa) {
-        this.telefone = telefone;
-        this.email = email;
-        this.pessoa = pessoa;
-    }
-
     private String telefone;
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pessoa")
     private Pessoa pessoa;            
-    
+
+    public Contato(String telefone, String email, Pessoa pessoa) {
+        this.telefone = telefone;
+        this.email = email;
+        this.pessoa = pessoa;
+    }
 }

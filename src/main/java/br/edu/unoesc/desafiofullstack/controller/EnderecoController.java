@@ -24,14 +24,14 @@ public class EnderecoController {
     @Autowired
     private EnderecoService enderecoService;
 
-	@GetMapping("/listar")
-	public String listar(Model model) {
-	    List<EnderecoDto> listaPessoas = null;
-        model.addAttribute("enderecos", listaPessoas);
+	@GetMapping("/listar/{pessoa}")
+	public String listar(@PathVariable("pessoa") Long pessoa, Model model) {
+	    List<EnderecoDto> listaEnderecos = enderecoService.encontrar();
+        model.addAttribute("pessoaCodigo", pessoa);
+        model.addAttribute("enderecos", listaEnderecos);
 		
 		return "endereco/listagem";
-	}
-
+	}	
     @GetMapping("/cadastro/{pessoa}")
     public String mostrarFormularioCadastro(@PathVariable("pessoa") Long pessoa, Model model) {
         model.addAttribute("pessoaCodigo", pessoa);
@@ -45,7 +45,6 @@ public class EnderecoController {
             return "endereco/cadastro";
         }
 
-        // boolean salvouComSucesso = enderecoService.salvar(pessoaDto);
         enderecoService.salvar(enderecoDto);
         return "redirect:/";
     }

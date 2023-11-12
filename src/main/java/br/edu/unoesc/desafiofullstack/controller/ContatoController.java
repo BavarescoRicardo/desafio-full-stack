@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.unoesc.desafiofullstack.dto.ContatoDto;
@@ -25,9 +24,10 @@ public class ContatoController {
     @Autowired
     private ContatoService contatoService;
 
-	@GetMapping("/listar")
-	public String listar(@RequestParam(name="codigo", required=false) long codigo, Model model) {
-	    List<ContatoDto> listaContatos = null;
+	@GetMapping("/listar/{pessoa}")
+	public String listar(@PathVariable("pessoa") Long pessoa, Model model) {
+	    List<ContatoDto> listaContatos = contatoService.encontrar();
+        model.addAttribute("pessoaCodigo", pessoa);
         model.addAttribute("contatos", listaContatos);
 		
 		return "contato/listagem";
@@ -42,7 +42,6 @@ public class ContatoController {
 
     @PostMapping("/save")
     public String novo(@Valid ContatoDto contatoDto, BindingResult result, RedirectAttributes redirectAttributes) {
-        System.out.println("Tentando salvar contato");
 		if (result.hasErrors()) {
             return "contato/cadastro";
         }

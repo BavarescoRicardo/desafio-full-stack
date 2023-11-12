@@ -3,48 +3,58 @@
 <head>
     <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/header :: head">    
-    <title>Lista de pessoas</title>
+    <title>Lista de enderecos</title>
 </head>
 <body>    
     <div class="container">
-        <h1 style="margin-bottom: 1em;">Lista de pessoas</h1>
+        <h1 style="margin-bottom: 1em;">Lista de enderecos</h1>
 
         <table class="table table-hover">
             <thead class="table-dark">
               <th>Código</th>
-              <th>Nome</th>
-              <th>CPF</th>
+              <th>Pessoa</th>
+              <th>CEP</th>
+              <th>Logradouro</th>
+              <th>Número</th>
+              <th>Bairro</th>
+              <th>Múnicipio</th>
+              <th>Estado</th>
               <th>Ações</th>
             </thead>
             <tbody>
-              <th:block th:each="pessoa : ${pessoas}">
+              <th:block th:each="endereco : ${enderecos}">
                 <tr>
-                  <td th:text="${pessoa.codigo}"></td>
-                  <td th:text="${pessoa.nome}"></td>
-                  <td th:text="${pessoa.CPF}"></td>
+                  <td th:text="${endereco.codigo}"></td>
+                  <td th:text="${endereco.pessoa}"></td>
+                  <td th:text="${endereco.cep}"></td>
+                  <td th:text="${endereco.logradouro}"></td>
+                  <td th:text="${endereco.numero}"></td>
+                  <td th:text="${endereco.bairro}"></td>
+                  <td th:text="${endereco.municipio}"></td>
+                  <td th:text="${endereco.estado}"></td>
                   <td>
                     <a 
                       data-bs-toggle="modal" 
-                      th:attr="data-bs-target='#modal-delete'+${pessoa.codigo}"
+                      th:attr="data-bs-target='#modal-delete'+${endereco.codigo}"
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
-                    <a th:href="@{'/contato/cadastro/' + ${pessoa.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
-                    <a th:href="@{'/endereco/cadastro/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Endereços</a>
+                    <a th:href="@{'/contato/cadastro/' + ${endereco.codigo}}" class="btn btn-secondary btn-sm">Contatos</a>
+                    <a th:href="@{'/endereco/cadastro/' + ${endereco.codigo}}" class="btn btn-success btn-sm">Endereços</a>
                   </td>
                 </tr>
                 <!-- Modal exluir -->
-                <div class="modal modal-delete" th:codigo="modal-delete+${pessoa.codigo}">
+                <div class="modal modal-delete" th:codigo="modal-delete+${endereco.codigo}">
                   <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
                               <h5 codigo="delModalLabel">Excluir</h5>
                           </div>
                           <div class="modal-body">
-                              O usuário será excluido, confirma esta ação?
+                              O Endereço será excluido, confirma esta ação?
                           </div>
                           <div class="modal-footer">
-                            <a th:href="@{'/pessoa/delete/' + ${pessoa.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
+                            <a th:href="@{'/endereco/delete/' + ${endereco.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
                               <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
                           </div>
                       </div>
@@ -53,6 +63,8 @@
               </th:block>
             </tbody>
           </table>
+          <a th:href="@{'/endereco/cadastro/' + ${pessoaCodigo}}" class="btn btn-secondary btn-sm">Cadastrar endereço</a>
+
           <p><a href="/">Inicio</a></p>
     </div>
     
