@@ -1,12 +1,6 @@
 package br.edu.unoesc.desafiofullstack.dto;
-import java.sql.Date;
-
 import org.hibernate.validator.constraints.NotBlank;
 
-import br.edu.unoesc.desafiofullstack.model.Pessoa;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

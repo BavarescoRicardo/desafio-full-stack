@@ -1,8 +1,6 @@
 package br.edu.unoesc.desafiofullstack.model;
 
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +30,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
     private String cep;
-    private Date logradouro;
+    private String logradouro;
     private String numero;
     private String bairro;
     private String municio;

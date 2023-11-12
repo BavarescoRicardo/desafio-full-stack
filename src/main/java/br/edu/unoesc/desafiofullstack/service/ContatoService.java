@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import br.edu.unoesc.desafiofullstack.dto.ContatoDto;
 import br.edu.unoesc.desafiofullstack.model.Contato;
 import br.edu.unoesc.desafiofullstack.repository.ContatoRepository;
-import br.edu.unoesc.desafiofullstack.repository.ContatoRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
