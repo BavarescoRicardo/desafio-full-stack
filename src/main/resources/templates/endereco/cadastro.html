@@ -55,10 +55,6 @@
 		</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
-
 	<script>		
 		$(document).ready(function() {
 
@@ -73,7 +69,6 @@
 			
 			//Quando o campo cep perde o foco.
 			$("#cep").blur(function() {
-				alert("passou pelo campo cep..")
 				//Nova variável "cep" somente com dígitos.
 				var cep = $(this).val().replace(/\D/g, '');
 
@@ -87,22 +82,20 @@
 					if(validacep.test(cep)) {
 
 						//Preenche os campos com "..." enquanto consulta webservice.
-						$("#rua").val("...");
+						$("#logradouro").val("...");
 						$("#bairro").val("...");
-						$("#cidade").val("...");
-						$("#uf").val("...");
-						$("#ibge").val("...");
+						$("#municipio").val("...");
+						$("#estado").val("...");
 
 						//Consulta o webservice viacep.com.br/
+						var urlConsulta = "https://viacep.com.br/ws/"+ cep +"/json/?callback=?";
 						$.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
 							if (!("erro" in dados)) {
 								//Atualiza os campos com os valores da consulta.
-								$("#rua").val(dados.logradouro);
+								$("#logradouro").val(dados.logradouro);
 								$("#bairro").val(dados.bairro);
-								$("#cidade").val(dados.localidade);
-								$("#uf").val(dados.uf);
-								$("#ibge").val(dados.ibge);
+								$("#municipio").val(dados.localidade);
+								$("#estado").val(dados.uf);
 							} //end if.
 							else {
 								//CEP pesquisado não foi encontrado.
