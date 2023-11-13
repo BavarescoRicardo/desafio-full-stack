@@ -32,24 +32,7 @@
                     >Excluir</a>                
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
                   </td>
-                </tr>
-                <!-- Modal exluir -->
-                <div class="modal modal-delete" th:codigo="modal-delete+${contato.codigo}">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 codigo="delModalLabel">Excluir</h5>
-                          </div>
-                          <div class="modal-body">
-                              O usuário será excluido, confirma esta ação?
-                          </div>
-                          <div class="modal-footer">
-                            <a th:href="@{'/contato/delete/' + ${contato.codigo}}" class="btn btn-success btn-sm">Confirmar</a>
-                              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                          </div>
-                      </div>
-                  </div>
-                </div>            
+                </tr>           
               </th:block>
             </tbody>
           </table>
