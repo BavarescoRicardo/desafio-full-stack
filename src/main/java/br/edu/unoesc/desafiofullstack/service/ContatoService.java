@@ -75,6 +75,19 @@ public class ContatoService {
 //    }
 //
 //    
+
+    public List<ContatoDto> encontrarPorPessoa(Long pessoa){
+        List<ContatoDto> listaDto = new ArrayList<ContatoDto>();
+        
+        // Converte a lista de objetos da entidade em objetos dto para transferencia
+        for(Contato contato: contatoDB.encontrarPorCodigoPessoa(pessoa)) {
+            listaDto.add(new ContatoDto(
+        		contato.getCodigo(), contato.getEmail(), contato.getTelefone(), contato.getPessoa().getCodigo()));
+        }
+
+        return listaDto;
+    } 
+
    public ResponseEntity<String> remover(long id){
        try {
             Contato contato = encontrarPorId(id).get();

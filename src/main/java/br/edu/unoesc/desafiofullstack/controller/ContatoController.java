@@ -26,7 +26,7 @@ public class ContatoController {
 
 	@GetMapping("/listar/{pessoa}")
 	public String listar(@PathVariable("pessoa") Long pessoa, Model model) {
-	    List<ContatoDto> listaContatos = contatoService.encontrar();
+	    List<ContatoDto> listaContatos = contatoService.encontrarPorPessoa(pessoa);
         model.addAttribute("pessoaCodigo", pessoa);
         model.addAttribute("contatos", listaContatos);
 		

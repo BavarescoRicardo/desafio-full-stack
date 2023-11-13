@@ -46,7 +46,6 @@ public class EnderecoService {
         return listaDto;
     }
 
-
     public List<EnderecoDto> encontrarPorPessoa(Long pessoa){
         List<EnderecoDto> listaDto = new ArrayList<EnderecoDto>();
         

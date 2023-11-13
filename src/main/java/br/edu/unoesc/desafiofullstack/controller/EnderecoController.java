@@ -33,14 +33,14 @@ public class EnderecoController {
 		return "endereco/listagem";
 	}	
     @GetMapping("/cadastro/{pessoa}")
-    public String mostrarFormularioCadastro(@PathVariable("pessoa") Long pessoa, Model model) {
+    public String cadastro(@PathVariable("pessoa") Long pessoa, Model model) {
         model.addAttribute("pessoaCodigo", pessoa);
         model.addAttribute("enderecoDto", new EnderecoDto());
         return "endereco/cadastro";
     }    
 
     @PostMapping("/save")
-    public String novo(@Valid EnderecoDto enderecoDto, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String salvar(@Valid EnderecoDto enderecoDto, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "endereco/cadastro";
         }
