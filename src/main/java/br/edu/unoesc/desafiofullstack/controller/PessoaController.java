@@ -45,7 +45,7 @@ public class PessoaController {
 
         // boolean salvouComSucesso = pessoaService.salvar(pessoaDto);
         pessoaService.salvar(pessoaDto);
-        return "redirect:/";
+        return "redirect:/pessoa/listar";
     }	
 
 }
