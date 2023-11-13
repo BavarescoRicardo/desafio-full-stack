@@ -24,9 +24,7 @@
                   <td th:text="${pessoa.CPF}"></td>
                   <td>
                     <a 
-                      data-bs-toggle="modal"
-                      th:data-codigo-pessoa="${pessoa.codigo}"
-                      onclick="excluirPessoa(this)"
+                      th:href="@{'/pessoa/remover/'+ ${pessoa.codigo}}"
                       name="excluir"
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
@@ -47,7 +45,7 @@
         console.log(e);
         console.log(e.dataset.codigoPessoa);
         $.ajax({
-          url: '/pessoa/delete/'+e.dataset.codigoPessoa,
+          url: '/pessoa/remover/'+e.dataset.codigoPessoa,
           type: 'PUT',
           success: function(response) {
             console.log("Resposta ajax");

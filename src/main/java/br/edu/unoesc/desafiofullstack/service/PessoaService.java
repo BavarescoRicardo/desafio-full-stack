@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.edu.unoesc.desafiofullstack.dto.PessoaDto;
@@ -17,9 +18,17 @@ public class PessoaService {
     private final PessoaRepository pessoaDB;
 
 
-    public Optional<Pessoa> encontrarPorId(Long id){        
-        return pessoaDB.findById(id);
+    public Pessoa encontrarPorId(Long id){        
+        Pessoa pessoa = pessoaDB.findById(id).get();
+        return pessoa;
     }
+    
+    public PessoaDto encontrarDtoPorId(Long id){        
+        Pessoa pessoa = pessoaDB.findById(id).get();
+        PessoaDto pessoaDto = new PessoaDto(
+        		pessoa.getCodigo(), pessoa.getNome(), pessoa.getCPF(), pessoa.getDataNascimento(), pessoa.getSexo());
+        return pessoaDto;
+    }     
 
     public List<PessoaDto> encontrar(){
         List<PessoaDto> listaDto = new ArrayList<PessoaDto>();
@@ -66,27 +75,15 @@ public class PessoaService {
 //    }
 //
 //    
-//    public ResponseEntity<String> remover(long id){
-//        try {
-//            // Encontra objetos da lista de participantes pelo id da apresentacao
-//            List<ParticipanteDto> participantes = participanteServices.encontrarPorApresentacaoId(id);
-//            // remover endereco de todos os participantes 
-//            for (ParticipanteDto participanteDto : participantes) {
-//                // pessoaDB.removeByIdParticipante(participanteDto.getCodigo());                 
-//                Endereco endereco = pessoaDB.findById(participanteDto.getCodigo()).get();
-//                pessoaDB.deleteById(endereco.getId());
-//                // remover participante 
-//                participanteServices.remover(participanteDto.getCodigo());
-//                apresentacaoServices.remover(id);
-//            }
-//
-//            // por fim remover apresentacao
-//            apresentacaoServices.remover(id);
-//            
-//
-//            return ResponseEntity.ok().body("Removido objeto de id: "+id);
-//        } catch (Exception e) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }  
+   public ResponseEntity<String> remover(long id){
+       try {
+           // Encontra objetos da lista de participantes pelo id da apresentacao
+           Pessoa pessoa = pessoaDB.findById(id).get();
+           pessoaDB.delete(pessoa);
+
+           return ResponseEntity.ok().body("Removido objeto de id: "+id);
+       } catch (Exception e) {
+           return ResponseEntity.notFound().build();
+       }
+   }  
 }

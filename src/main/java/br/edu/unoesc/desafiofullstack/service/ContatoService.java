@@ -38,7 +38,7 @@ public class ContatoService {
        try {
            // Define objeto  participante para salvar no banco de dados a partir do dto recebido
        	Contato contato = new Contato(
-       			contatoDto.getEmail(), contatoDto.getTelefone(), pessoaService.encontrarPorId(Long.valueOf(contatoDto.getPessoa())).get());
+       			contatoDto.getEmail(), contatoDto.getTelefone(), pessoaService.encontrarPorId(Long.valueOf(contatoDto.getPessoa())));
 
        	contatoDB.save(contato);
         return true;

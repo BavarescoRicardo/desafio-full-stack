@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -43,9 +44,21 @@ public class PessoaController {
             return "pessoa/cadastro";
         }
 
-        // boolean salvouComSucesso = pessoaService.salvar(pessoaDto);
         pessoaService.salvar(pessoaDto);
         return "redirect:/pessoa/listar";
-    }	
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditCursoForm(@PathVariable("id") Long codigo, Model model){          
+        PessoaDto pessoaDto = pessoaService.encontrarDtoPorId(codigo); 
+        model.addAttribute("pessoa", pessoaDto);
+        return "/pessoa/cadastro";
+    } 
+
+    @GetMapping("/remover/{id}")
+    public String deleteCurso(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
+        pessoaService.remover(codigo);
+        return "redirect:/pessoa/listar";
+    }        
 
 }

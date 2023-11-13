@@ -42,7 +42,7 @@ public class EnderecoService {
        	Endereco endereco = new Endereco(
        			enderecoDto.getCep(), enderecoDto.getLogradouro(),
                 enderecoDto.getNumero(), enderecoDto.getBairro(), 
-                enderecoDto.getMunicipio(), enderecoDto.getEstado(), pessoaService.encontrarPorId(Long.valueOf(enderecoDto.getPessoa())).get());
+                enderecoDto.getMunicipio(), enderecoDto.getEstado(), pessoaService.encontrarPorId(Long.valueOf(enderecoDto.getPessoa())));
 
        	enderecoDB.save(endereco);
         return true;
