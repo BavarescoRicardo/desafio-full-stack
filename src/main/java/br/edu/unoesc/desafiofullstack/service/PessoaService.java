@@ -43,9 +43,15 @@ public class PessoaService {
 
    public boolean salvar(PessoaDto pessoaDto){
        try {
-           // Define objeto  participante para salvar no banco de dados a partir do dto recebido
-       	Pessoa pessoa = new Pessoa(
-       			pessoaDto.getNome(), pessoaDto.getCPF(), pessoaDto.getDataNascimento(), pessoaDto.getSexo());
+        Pessoa pessoa = null;
+           if(pessoaDto.getCodigo() != null){
+                pessoa = new Pessoa(
+                        pessoaDto.getCodigo(), pessoaDto.getNome(), pessoaDto.getCPF(), pessoaDto.getDataNascimento(), pessoaDto.getSexo());            
+           } else {
+                pessoa = new Pessoa(
+                        pessoaDto.getNome(), pessoaDto.getCPF(), pessoaDto.getDataNascimento(), pessoaDto.getSexo());                        
+           }
+
 
        	pessoaDB.save(pessoa);
         return true;
