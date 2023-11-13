@@ -59,7 +59,7 @@ public class ContatoController {
     @GetMapping("/remover/{id}")
     public String deletar(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
         contatoService.remover(codigo);
-        return "redirect:/contato/listar";
+        return "redirect:/contato/listar/" + codigo;
     }            
 
 }

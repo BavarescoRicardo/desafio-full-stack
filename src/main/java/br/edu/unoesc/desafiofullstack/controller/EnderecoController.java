@@ -59,6 +59,6 @@ public class EnderecoController {
     @GetMapping("/remover/{id}")
     public String deletar(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
         enderecoService.remover(codigo);
-        return "redirect:/endereco/listar";
+        return "redirect:/endereco/listar/" + codigo;
     }
 }

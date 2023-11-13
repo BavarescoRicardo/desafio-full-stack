@@ -18,11 +18,6 @@ public class HomeController {
 	public String inicio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);
 		return "home";
-	}	
-	
-	
-	private String testeUsos() {
-		return "ola";
 	}
 
 }
