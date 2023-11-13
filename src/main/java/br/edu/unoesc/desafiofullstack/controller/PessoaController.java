@@ -49,14 +49,14 @@ public class PessoaController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditCursoForm(@PathVariable("id") Long codigo, Model model){          
+    public String editar(@PathVariable("id") Long codigo, Model model){          
         PessoaDto pessoaDto = pessoaService.encontrarDtoPorId(codigo); 
         model.addAttribute("pessoa", pessoaDto);
         return "/pessoa/cadastro";
     } 
 
     @GetMapping("/remover/{id}")
-    public String deleteCurso(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
+    public String deletar(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
         pessoaService.remover(codigo);
         return "redirect:/pessoa/listar";
     }        

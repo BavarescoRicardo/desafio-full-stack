@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.edu.unoesc.desafiofullstack.dto.EnderecoDto;
@@ -21,6 +22,15 @@ public class EnderecoService {
     public Optional<Endereco> encontrarPorId(Long id){        
         return enderecoDB.findById(id);
     }
+
+    public EnderecoDto encontrarDtoPorId(Long id){        
+        Endereco endereco = enderecoDB.findById(id).get();
+        EnderecoDto enderecoDto = new EnderecoDto(
+            endereco.getCodigo(), endereco.getCep(), endereco.getLogradouro(),
+            endereco.getNumero(), endereco.getBairro(), 
+            endereco.getMunicipio(), endereco.getEstado(), endereco.getPessoa().getCodigo());
+        return enderecoDto;
+    }    
 
     public List<EnderecoDto> encontrar(){
         List<EnderecoDto> listaDto = new ArrayList<EnderecoDto>();
@@ -71,27 +81,14 @@ public class EnderecoService {
 //    }
 //
 //    
-//    public ResponseEntity<String> remover(long id){
-//        try {
-//            // Encontra objetos da lista de participantes pelo id da apresentacao
-//            List<ParticipanteDto> participantes = participanteServices.encontrarPorApresentacaoId(id);
-//            // remover endereco de todos os participantes 
-//            for (ParticipanteDto participanteDto : participantes) {
-//                // enderecoDB.removeByIdParticipante(participanteDto.getCodigo());                 
-//                Endereco endereco = enderecoDB.findById(participanteDto.getCodigo()).get();
-//                enderecoDB.deleteById(endereco.getId());
-//                // remover participante 
-//                participanteServices.remover(participanteDto.getCodigo());
-//                apresentacaoServices.remover(id);
-//            }
-//
-//            // por fim remover apresentacao
-//            apresentacaoServices.remover(id);
-//            
-//
-//            return ResponseEntity.ok().body("Removido objeto de id: "+id);
-//        } catch (Exception e) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }  
+   public ResponseEntity<String> remover(long id){
+       try {
+                Endereco endereco = enderecoDB.findById(id).get();
+                enderecoDB.delete(endereco);           
+
+           return ResponseEntity.ok().body("Removido objeto de id: "+id);
+       } catch (Exception e) {
+           return ResponseEntity.notFound().build();
+       }
+   }  
 }

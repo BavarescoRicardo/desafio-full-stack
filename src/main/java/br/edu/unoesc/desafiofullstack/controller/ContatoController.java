@@ -49,4 +49,17 @@ public class ContatoController {
         return "redirect:/";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editar(@PathVariable("id") Long codigo, Model model){          
+        ContatoDto contatoDto = contatoService.encontrarDtoPorId(codigo); 
+        model.addAttribute("contato", contatoDto);
+        return "/pessoa/cadastro";
+    } 
+
+    @GetMapping("/remover/{id}")
+    public String deletar(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
+        contatoService.remover(codigo);
+        return "redirect:/contato/listar";
+    }            
+
 }

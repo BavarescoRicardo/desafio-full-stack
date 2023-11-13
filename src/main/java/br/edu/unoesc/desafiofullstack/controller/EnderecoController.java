@@ -48,4 +48,17 @@ public class EnderecoController {
         enderecoService.salvar(enderecoDto);
         return "redirect:/";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editar(@PathVariable("id") Long codigo, Model model){          
+        EnderecoDto enderecoDto = enderecoService.encontrarDtoPorId(codigo); 
+        model.addAttribute("endereco", enderecoDto);
+        return "/pessoa/cadastro";
+    } 
+
+    @GetMapping("/remover/{id}")
+    public String deletar(@PathVariable("id") Long codigo, RedirectAttributes redirectAttributes){      
+        enderecoService.remover(codigo);
+        return "redirect:/endereco/listar";
+    }
 }

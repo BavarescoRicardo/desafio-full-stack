@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.edu.unoesc.desafiofullstack.dto.ContatoDto;
@@ -21,6 +22,13 @@ public class ContatoService {
     public Optional<Contato> encontrarPorId(Long id){        
         return contatoDB.findById(id);
     }
+
+    public ContatoDto encontrarDtoPorId(Long id){        
+        Contato contato = contatoDB.findById(id).get();
+        ContatoDto contatoDto = new ContatoDto(
+        		contato.getCodigo(), contato.getEmail(), contato.getTelefone(), contato.getPessoa().getCodigo());
+        return contatoDto;
+    }    
 
     public List<ContatoDto> encontrar(){
         List<ContatoDto> listaDto = new ArrayList<ContatoDto>();
@@ -67,27 +75,13 @@ public class ContatoService {
 //    }
 //
 //    
-//    public ResponseEntity<String> remover(long id){
-//        try {
-//            // Encontra objetos da lista de participantes pelo id da apresentacao
-//            List<ParticipanteDto> participantes = participanteServices.encontrarPorApresentacaoId(id);
-//            // remover endereco de todos os participantes 
-//            for (ParticipanteDto participanteDto : participantes) {
-//                // contatoDB.removeByIdParticipante(participanteDto.getCodigo());                 
-//                Endereco endereco = contatoDB.findById(participanteDto.getCodigo()).get();
-//                contatoDB.deleteById(endereco.getId());
-//                // remover participante 
-//                participanteServices.remover(participanteDto.getCodigo());
-//                apresentacaoServices.remover(id);
-//            }
-//
-//            // por fim remover apresentacao
-//            apresentacaoServices.remover(id);
-//            
-//
-//            return ResponseEntity.ok().body("Removido objeto de id: "+id);
-//        } catch (Exception e) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }  
+   public ResponseEntity<String> remover(long id){
+       try {
+            Contato contato = encontrarPorId(id).get();
+            contatoDB.delete(contato);
+           return ResponseEntity.ok().body("Removido objeto de id: "+id);
+       } catch (Exception e) {
+           return ResponseEntity.notFound().build();
+       }
+   }  
 }

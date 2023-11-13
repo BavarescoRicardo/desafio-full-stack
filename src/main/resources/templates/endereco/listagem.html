@@ -34,10 +34,10 @@
                   <td th:text="${endereco.estado}"></td>
                   <td>
                     <a 
-                      data-bs-toggle="modal" 
-                      th:attr="data-bs-target='#modal-delete'+${endereco.codigo}"
+                      th:href="@{'/endereco/remover/'+ ${endereco.codigo}}"
+                      name="excluir"
                       class="btn btn-danger btn-sm"
-                    >Excluir</a>                
+                    >Excluir</a>                              
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
                   </td>
                 </tr>          
