@@ -28,6 +28,11 @@
                       name="excluir"
                       class="btn btn-danger btn-sm"
                     >Excluir</a>                
+                    <a 
+                      th:href="@{'/pessoa/editar/'+ ${pessoa.codigo}}"
+                      name="editar"
+                      class="btn btn-secondary btn-sm"
+                    >Editar</a>                           
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
                     <a th:href="@{'/contato/listar/' + ${pessoa.codigo}}" class="btn btn-success btn-sm mb-1 mt-1">Contatos</a>                    
                     <a th:href="@{'/endereco/listar/' + ${pessoa.codigo}}" class="btn btn-success btn-sm mb-1 mt-1">Endereços</a>                    

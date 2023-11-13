@@ -49,7 +49,7 @@ public class EnderecoController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Long codigo, Model model){          
         EnderecoDto enderecoDto = enderecoService.encontrarDtoPorId(codigo); 
         model.addAttribute("endereco", enderecoDto);

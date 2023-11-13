@@ -37,7 +37,12 @@
                       th:href="@{'/endereco/remover/'+ ${endereco.codigo}}"
                       name="excluir"
                       class="btn btn-danger btn-sm"
-                    >Excluir</a>                              
+                    >Excluir</a> 
+                    <a 
+                      th:href="@{'/pessoa/editar/'+ ${pessoa.codigo}}"
+                      name="editar"
+                      class="btn btn-secondary btn-sm"
+                    >Editar</a>                                                 
                     <a th:replace="fragments/header :: head" class="btn btn-primary btn-sm">Editar</a>
                   </td>
                 </tr>          

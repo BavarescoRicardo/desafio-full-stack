@@ -48,10 +48,10 @@ public class PessoaController {
         return "redirect:/pessoa/listar";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id") Long codigo, Model model){          
         PessoaDto pessoaDto = pessoaService.encontrarDtoPorId(codigo); 
-        model.addAttribute("pessoa", pessoaDto);
+        model.addAttribute("pessoaDto", pessoaDto);
         return "/pessoa/cadastro";
     } 
 
