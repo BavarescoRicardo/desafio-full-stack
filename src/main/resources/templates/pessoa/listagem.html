@@ -39,22 +39,6 @@
           <div class="m-2">
             <a href="/pessoa/cadastro" class="btn btn-secondary btn-sm">Cadastrar pessoa</a>
           </div>
-    </div>
-    <script>
-      function excluirPessoa(e){
-        console.log(e);
-        console.log(e.dataset.codigoPessoa);
-        $.ajax({
-          url: '/pessoa/remover/'+e.dataset.codigoPessoa,
-          type: 'PUT',
-          success: function(response) {
-            console.log("Resposta ajax");
-            console.log(response);
-          }
-        });        
-
-      }
-    </script>
-    
+    </div>    
 </body>
 </html>
