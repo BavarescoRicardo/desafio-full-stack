@@ -53,7 +53,7 @@ public class EnderecoController {
     public String editar(@PathVariable("id") Long codigo, Model model){          
         EnderecoDto enderecoDto = enderecoService.encontrarDtoPorId(codigo); 
         model.addAttribute("endereco", enderecoDto);
-        return "/pessoa/cadastro";
+        return "/endereco/cadastro";
     } 
 
     @GetMapping("/remover/{id}")
