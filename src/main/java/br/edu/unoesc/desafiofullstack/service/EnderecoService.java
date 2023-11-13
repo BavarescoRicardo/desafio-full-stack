@@ -46,6 +46,21 @@ public class EnderecoService {
         return listaDto;
     }
 
+
+    public List<EnderecoDto> encontrarPorPessoa(Long pessoa){
+        List<EnderecoDto> listaDto = new ArrayList<EnderecoDto>();
+        
+        // Converte a lista de objetos da entidade em objetos dto para transferencia
+        for(Endereco endereco: enderecoDB.encontrarPorCodigoPessoa(pessoa)) {
+            listaDto.add(new EnderecoDto(
+        		endereco.getCodigo(), endereco.getCep(), endereco.getLogradouro(),
+                endereco.getNumero(), endereco.getBairro(), 
+                endereco.getMunicipio(), endereco.getEstado(), endereco.getPessoa().getCodigo()));
+        }
+
+        return listaDto;
+    }    
+
    public boolean salvar(EnderecoDto enderecoDto){
        try {
            // Define objeto  participante para salvar no banco de dados a partir do dto recebido

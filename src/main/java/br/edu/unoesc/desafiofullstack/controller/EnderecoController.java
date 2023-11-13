@@ -26,7 +26,7 @@ public class EnderecoController {
 
 	@GetMapping("/listar/{pessoa}")
 	public String listar(@PathVariable("pessoa") Long pessoa, Model model) {
-	    List<EnderecoDto> listaEnderecos = enderecoService.encontrar();
+	    List<EnderecoDto> listaEnderecos = enderecoService.encontrarPorPessoa(pessoa);
         model.addAttribute("pessoaCodigo", pessoa);
         model.addAttribute("enderecos", listaEnderecos);
 		
