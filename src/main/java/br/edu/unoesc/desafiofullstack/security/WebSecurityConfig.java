@@ -18,19 +18,19 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-        .csrf()
-        .disable()
-        .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.OPTIONS).permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
-		.formLogin((form) -> form
-			.loginPage("/login")
-			.defaultSuccessUrl("/home", true)
-			.permitAll()
-		)
-		.logout((logout) -> logout.permitAll());
+			.csrf(csrf -> csrf
+					.disable())
+			.authorizeHttpRequests()
+			.requestMatchers(HttpMethod.OPTIONS).permitAll()
+			.anyRequest()
+			.authenticated()
+			.and()
+			.formLogin((form) -> form
+							.loginPage("/login")
+							.defaultSuccessUrl("/home", true)
+							.permitAll()
+			)
+			.logout((logout) -> logout.permitAll());
 
 		return http.build();
 	}
