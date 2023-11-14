@@ -22,8 +22,6 @@ public class WebSecurityConfig {
         .disable()
         .authorizeHttpRequests()
             .requestMatchers(HttpMethod.OPTIONS).permitAll()
-            .requestMatchers("/api/evento/**", "/api/categorias",
-                "/api/salvaendereco", "/api/enderecos", "/api/salvaapresentacao", "/api/apresentacoescartao").permitAll()
         .anyRequest()
         .authenticated()
         .and()
