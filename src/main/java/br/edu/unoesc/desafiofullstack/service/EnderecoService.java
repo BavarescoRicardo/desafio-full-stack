@@ -62,11 +62,19 @@ public class EnderecoService {
 
    public boolean salvar(EnderecoDto enderecoDto){
        try {
-           // Define objeto  participante para salvar no banco de dados a partir do dto recebido
-       	Endereco endereco = new Endereco(
-       			enderecoDto.getCep(), enderecoDto.getLogradouro(),
-                enderecoDto.getNumero(), enderecoDto.getBairro(), 
-                enderecoDto.getMunicipio(), enderecoDto.getEstado(), pessoaService.encontrarPorId(Long.valueOf(enderecoDto.getPessoa())));
+            Endereco endereco = null;
+           if(enderecoDto.getCodigo() != null) {
+                endereco = new Endereco(
+                    enderecoDto.getCodigo(), enderecoDto.getCep(), enderecoDto.getLogradouro(),
+                    enderecoDto.getNumero(), enderecoDto.getBairro(), 
+                    enderecoDto.getMunicipio(), enderecoDto.getEstado(), pessoaService.encontrarPorId(Long.valueOf(enderecoDto.getPessoa())));            
+           } else {
+                endereco = new Endereco(
+                    enderecoDto.getCep(), enderecoDto.getLogradouro(),
+                    enderecoDto.getNumero(), enderecoDto.getBairro(), 
+                    enderecoDto.getMunicipio(), enderecoDto.getEstado(), pessoaService.encontrarPorId(Long.valueOf(enderecoDto.getPessoa())));                        
+           }
+
 
        	enderecoDB.save(endereco);
         return true;
@@ -74,27 +82,7 @@ public class EnderecoService {
            return false;
        }
    }
-//    
-//    public EnderecoDto atualizar(EnderecoDto endereco, long id){
-//        try {
-//            // Seleciona objeto salvo no banco pelo seu id e depois o atualiza com o dto
-//            Endereco e = this.encontrarPorId(id).get();
-//            if((endereco.getEndereco() != null) && (endereco.getEndereco().length() > 0)){
-//                e.setEndereco(endereco.getEndereco());    
-//            }
-//
-//            if((endereco.getCidade() != null) && (endereco.getCidade().length() > 0)){
-//                e.setCidade(endereco.getCidade());    
-//            }
-//
-//            this.enderecoDB.save(e);    
-//        } catch (Exception e) {
-//            return null;
-//        }
-//        return endereco;
-//    }
-//
-//    
+ 
    public ResponseEntity<String> remover(long id){
        try {
                 Endereco endereco = enderecoDB.findById(id).get();

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.unoesc.desafiofullstack.dto.EnderecoDto;
@@ -49,11 +50,12 @@ public class EnderecoController {
         return "redirect:/";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editar(@PathVariable("id") Long codigo, Model model){          
+    @GetMapping("/editar/")
+    public String editar(@RequestParam(name="id") Long codigo, @RequestParam(name="pessoa") Long pessoa, Model model){          
         EnderecoDto enderecoDto = enderecoService.encontrarDtoPorId(codigo); 
-        model.addAttribute("endereco", enderecoDto);
-        return "/endereco/cadastro";
+        model.addAttribute("pessoaCodigo", pessoa);
+        model.addAttribute("enderecoDto", enderecoDto);
+        return "endereco/cadastro";
     } 
 
     @GetMapping("/remover/{id}")
