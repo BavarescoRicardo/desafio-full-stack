@@ -68,7 +68,8 @@
 			
 			//Quando o campo cep perde o foco.
 			$("#cep").blur(function() {
-				$("#numero").mask("(999)-0000");
+				$("#cep").mask("99999-999");
+				$("#numero").mask("99999");
 				//Nova variável "cep" somente com dígitos.
 				var cep = $(this).val().replace(/\D/g, '');
 

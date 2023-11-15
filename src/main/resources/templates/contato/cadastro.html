@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head th:include="fragments/header :: head">
-    <html xmlns:th="http://www.thymeleaf.org">
-    <title>Cadastro contato</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/header :: head">    
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>    
     <div class="container">
@@ -16,7 +15,7 @@
 			>
 				<h1 style="margin-bottom: 1em;">Cadastro de novo contato</h1>
 				<div class="form-outline mb-4">
-					<input type="text" id="email" name="email" required class="form-control" th:field="*{email}"/>
+					<input type="text" id="email" name="email" required class="form-control"  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com" th:field="*{email}"/>
 					<label class="form-label" for="email">Informe seu email</label>
 				</div>
 			
@@ -34,5 +33,12 @@
 			</form>
 		</div>
 	</div>
+	<script>		
+		$(document).ready(function() {			
+			// $("#email").mask('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com');
+			$("#telefone").mask("(99)99999-9999");
+			
+		});
+	</script>
 </body>
 </html>
