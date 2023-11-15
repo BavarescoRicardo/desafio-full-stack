@@ -52,7 +52,7 @@ public class Pessoa {
 	@NotEmpty(message = "Nome é obrigatório")
     private String nome;
     @NotEmpty(message = "CPF é obrigatório")
-	@Size(max=8, message= "O CPF não pode conter mais de 11 caracteres")	
+	@Size(max=15, message= "O CPF não pode conter mais de 11 caracteres")	
     private String CPF;
     private Date dataNascimento;
     private String sexo;       

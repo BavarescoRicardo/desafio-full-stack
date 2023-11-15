@@ -41,13 +41,13 @@ public class ContatoController {
         return "contato/cadastro";
     }
 
-    @PostMapping("/save")
-    public String novo(@Valid ContatoDto contatoDto, BindingResult result, RedirectAttributes redirectAttributes) {
+    @PostMapping("/save/{pessoa}")
+    public String novo(@Valid ContatoDto contatoDto, BindingResult result, @PathVariable("pessoa") Long pessoa, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
             return "contato/cadastro";
         }
         contatoService.salvar(contatoDto);
-        return "redirect:/";
+        return "redirect:/contato/listar/"+pessoa;
     }
 
     @GetMapping("/editar")

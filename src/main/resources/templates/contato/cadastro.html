@@ -9,7 +9,7 @@
 		<div class="container col-lg-10 spacer">
 			<form
 				th:object="${contatoDto}"
-				action="/contato/save"
+				th:action="@{/contato/save/{pessoa}(pessoa=${pessoaCodigo})}"
 				class="card-body"
 				method="POST"
 			>
@@ -35,7 +35,6 @@
 	</div>
 	<script>		
 		$(document).ready(function() {			
-			// $("#email").mask('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com');
 			$("#telefone").mask("(99)99999-9999");
 			
 		});
