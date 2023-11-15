@@ -47,7 +47,7 @@
 				<input class="form-control" type="hidden" th:value="${pessoaCodigo}" id="pessoa" name="pessoa" />
 				<input type="hidden" id="codigo" name="codigo" class="form-control" th:field="*{codigo}" />
 
-				<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+				<button type="submit" id="enderecocad" name="enderecocad" class="btn btn-primary btn-block" disabled>Cadastrar</button>
 			</form>
 		</div>
 	</div>
@@ -62,6 +62,8 @@
 				$("#cidade").val("");
 				$("#uf").val("");
 				$("#ibge").val("");
+
+				$('#enderecocad').attr('disabled', 'disabled' );
 			}
 			
 			//Quando o campo cep perde o foco.
@@ -87,16 +89,20 @@
 						//Consulta o webservice viacep.com.br/
 						$.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 							if (!("erro" in dados)) {
+								// Habilitar botão para cep valido
+								$('#enderecocad').removeAttr('Disabled');
+
 								//Atualiza os campos com os valores da consulta.
 								$("#logradouro").val(dados.logradouro);
 								$("#bairro").val(dados.bairro);
 								$("#municipio").val(dados.localidade);
-								$("#estado").val(dados.uf);
-							} //end if.
+								$("#estado").val(dados.uf);								
+							} 
 							else {
 								//CEP pesquisado não foi encontrado.
 								limpa_formulário_cep();
 								alert("CEP não encontrado.");
+								console.log("Não habilitado");
 							}
 						});
 					} //end if.
@@ -104,11 +110,13 @@
 						//cep é inválido.
 						limpa_formulário_cep();
 						alert("Formato de CEP inválido.");
+						console.log("Não habilitado");
 					}
 				} //end if.
 				else {
 					//cep sem valor, limpa formulário.
 					limpa_formulário_cep();
+					console.log("Não habilitado");
 				}
 			});
 		});
