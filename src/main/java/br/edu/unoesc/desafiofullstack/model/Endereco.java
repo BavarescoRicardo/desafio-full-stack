@@ -32,7 +32,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
     @NotEmpty(message = "Cep é obrigatório")
-	@Size(max=8, message= "O Cep não pode conter mais de 8 caracteres")
+	@Size(max=9, message= "O Cep não pode conter mais de 8 caracteres")
     private String cep;
     private String logradouro;
     private String numero;

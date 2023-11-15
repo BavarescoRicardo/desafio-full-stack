@@ -9,7 +9,7 @@
 		<div class="container col-lg-10 spacer">
 			<form
 				th:object="${enderecoDto}"
-				action="/endereco/save"
+				th:action="@{/endereco/save/{pessoa}(pessoa=${pessoaCodigo})}"
 				class="card-body"
 				method="POST"
 			>

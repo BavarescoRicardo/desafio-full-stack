@@ -40,14 +40,14 @@ public class EnderecoController {
         return "endereco/cadastro";
     }    
 
-    @PostMapping("/save")
-    public String salvar(@Valid EnderecoDto enderecoDto, BindingResult result, RedirectAttributes redirectAttributes) {
+    @PostMapping("/save/{pessoa}")
+    public String salvar(@Valid EnderecoDto enderecoDto, BindingResult result, @PathVariable("pessoa") Long pessoa, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "endereco/cadastro";
         }
 
         enderecoService.salvar(enderecoDto);
-        return "redirect:/";
+        return "redirect:/endereco/listar/"+pessoa;
     }
 
     @GetMapping("/editar")
