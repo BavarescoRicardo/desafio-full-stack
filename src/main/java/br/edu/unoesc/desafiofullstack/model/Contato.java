@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -30,6 +31,7 @@ public class Contato {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
     private String telefone;
+    @NotEmpty(message = "Nome é obrigatório")
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)

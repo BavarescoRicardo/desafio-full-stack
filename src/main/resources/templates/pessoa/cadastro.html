@@ -15,12 +15,12 @@
 		>
 			<h1 style="margin-bottom: 1em;">Cadastro de nova pessoa</h1>
 			<div class="form-outline mb-4">
-				<input type="text" id="nome" name="nome" class="form-control" th:field="*{nome}"/>
+				<input type="text" id="nome" name="nome" required class="form-control" th:field="*{nome}"/>
 				<label class="form-label" for="nome">Informe seu nome</label>
 			</div>
 		
 			<div class="form-outline mb-4">
-				<input type="text" id="CPF" name="CPF" class="form-control" th:field="*{CPF}" />
+				<input type="text" id="CPF" name="CPF" required class="form-control" th:field="*{CPF}" />
 				<label class="form-label" for="CPF">Informe seu CPF</label>
 			</div>
 

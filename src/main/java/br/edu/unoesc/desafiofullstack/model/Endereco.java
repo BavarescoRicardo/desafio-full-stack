@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -29,6 +31,8 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
+    @NotEmpty(message = "Cep é obrigatório")
+	@Size(max=8, message= "O Cep não pode conter mais de 8 caracteres")
     private String cep;
     private String logradouro;
     private String numero;

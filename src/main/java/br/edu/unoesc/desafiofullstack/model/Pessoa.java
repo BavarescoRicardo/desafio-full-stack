@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -47,7 +49,10 @@ public class Pessoa {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
+	@NotEmpty(message = "Nome é obrigatório")
     private String nome;
+    @NotEmpty(message = "CPF é obrigatório")
+	@Size(max=8, message= "O CPF não pode conter mais de 11 caracteres")	
     private String CPF;
     private Date dataNascimento;
     private String sexo;       
