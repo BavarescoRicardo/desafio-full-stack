@@ -58,5 +58,6 @@ Para auxiliar no entendimento, elaboramos um diagrama de classes simples contend
 
 ## Minha implementação
 * Criados modelos e repositórios
-* configuração banco local
-* incluidas bibliotecas lombok, jpa
+* Configuração banco local
+* Incluidas bibliotecas lombok, jpa
+* Definida senha padrão: login: bavaresco.ricardo.com senha: admin
