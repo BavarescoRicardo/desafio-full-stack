@@ -60,4 +60,8 @@ Para auxiliar no entendimento, elaboramos um diagrama de classes simples contend
 * Criados modelos e repositórios
 * Configuração banco local
 * Incluidas bibliotecas lombok, jpa
+* Configurações do Spring Security
+* Criação de páginas html e fragmentos
+* Implementação da api: viacep
+* Validações de campos em tela e antes de persistir no banco
 * Definida senha padrão: login: bavaresco.ricardo.com senha: admin
