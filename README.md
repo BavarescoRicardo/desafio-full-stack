@@ -64,4 +64,4 @@ Para auxiliar no entendimento, elaboramos um diagrama de classes simples contend
 * Criação de páginas html e fragmentos
 * Implementação da api: viacep
 * Validações de campos em tela e antes de persistir no banco
-* Definida senha padrão: login: bavaresco.ricardo.com senha: admin
+* * Definida senha padrão: login: bavaresco.ricardo.com senha: admin 
